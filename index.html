@@ -2,62 +2,114 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أذكار بستان غراس</title>
     <style>
         body {
-            background-color: #FFEB3B; /* اللون الأصفر الذي تحبينه */
-            color: #000000; /* اللون الأسود للنصوص */
-            font-family: 'Arial', sans-serif;
+            background-color: #F0F8FF; /* خلفية سماوية مبهجة */
+            font-family: 'Cairo', sans-serif;
             text-align: center;
             padding: 20px;
         }
-        .dhikr-card {
+        h1 { color: #FF69B4; font-size: 2.2rem; margin-bottom: 30px; text-shadow: 1px 1px 2px #ccc; }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* غيوم ملونة ومبهجة */
+        .cloud {
             background: white;
-            border: 3px solid #000;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px auto;
-            max-width: 400px;
+            border-radius: 50px;
+            padding: 25px;
+            width: 85%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0px 8px 15px rgba(0,0,0,0.05);
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
+            border: 4px solid #FFB6C1; /* وردي */
         }
-        .dhikr-card:active { transform: scale(0.95); }
+        
+        /* تلوين الغيوم بألوان مختلفة مبهجة */
+        .cloud:nth-child(1) { border-color: #FFB6C1; } /* وردي */
+        .cloud:nth-child(2) { border-color: #98FB98; } /* أخضر مبهج */
+        .cloud:nth-child(3) { border-color: #87CEFA; } /* أزرق */
+        .cloud:nth-child(4) { border-color: #FFDAB9; } /* برتقالي فاتح */
+        .cloud:nth-child(5) { border-color: #E6E6FA; } /* بنفسجي فاتح */
+
+        .cloud:active { transform: scale(0.95); }
+        
+        /* عداد دائري مبهج */
         .counter {
-            background: #000;
-            color: #FFEB3B;
+            background: #FFD700; /* ذهبي */
+            color: #555;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: inline-block;
-            line-height: 40px;
-            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            border: 3px solid white;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
         }
+        
+        p { font-size: 1.3rem; font-weight: bold; color: #444; margin: 0; line-height: 1.6; }
     </style>
 </head>
 <body>
-    <h1>بستان الأذكار 🌼</h1>
-    
-    <div class="dhikr-card" onclick="count(this, 3)">
-        <p>"سُبْحَانَ اللهِ وَبِحَمْدِهِ"</p>
-        <div class="counter">3</div>
-    </div>
 
-    <div class="dhikr-card" onclick="count(this, 33)">
-        <p>"الْحَمْدُ لِلَّه"</p>
-        <div class="counter">33</div>
+    <h1>✨ أذكار بستان غراس ✨</h1>
+
+    <div class="container">
+        <div class="cloud" onclick="updateCount(this)">
+            <p>"اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور"</p>
+            <div class="counter">1</div>
+        </div>
+
+        <div class="cloud" onclick="updateCount(this)">
+            <p>"اللهم إني أصبحت أشهدك وأشهد حملة عرشك وملائكتك وجميع خلقك أنك أنت الله"</p>
+            <div class="counter">4</div>
+        </div>
+
+        <div class="cloud" onclick="updateCount(this)">
+            <p>"رضيت بالله رباً وبالإسلام ديناً وبمحمد ﷺ نبياً"</p>
+            <div class="counter">3</div>
+        </div>
+
+        <div class="cloud" onclick="updateCount(this)">
+            <p>"يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين"</p>
+            <div class="counter">1</div>
+        </div>
+
+        <div class="cloud" onclick="updateCount(this)">
+            <p>"أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له"</p>
+            <div class="counter">1</div>
+        </div>
     </div>
 
     <script>
-        function count(element, max) {
+        function updateCount(element) {
             let counterDiv = element.querySelector('.counter');
-            let current = parseInt(counterDiv.innerText);
-            if (current > 0) {
+            let currentStr = counterDiv.innerText;
+            
+            if (currentStr === "✅") return;
+
+            let current = parseInt(currentStr);
+            if (current > 1) {
                 counterDiv.innerText = current - 1;
-            }
-            if (current === 1) {
-                element.style.backgroundColor = "#d4edda"; // يتغير اللون عند الانتهاء
-                alert("أحسنت يا بطل/بطلة غراس!");
+            } else {
+                counterDiv.innerText = "✅";
+                element.style.backgroundColor = "#FFFACD"; /* تلوين الغيمة عند الانتهاء */
+                element.style.transform = "scale(1.02)";
             }
         }
     </script>
