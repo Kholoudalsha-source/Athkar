@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>أذكار بستان غراس</title>
+    <style>
+        body {
+            background-color: #FFEB3B; /* اللون الأصفر الذي تحبينه */
+            color: #000000; /* اللون الأسود للنصوص */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .dhikr-card {
+            background: white;
+            border: 3px solid #000;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px auto;
+            max-width: 400px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .dhikr-card:active { transform: scale(0.95); }
+        .counter {
+            background: #000;
+            color: #FFEB3B;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            line-height: 40px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>بستان الأذكار 🌼</h1>
+    
+    <div class="dhikr-card" onclick="count(this, 3)">
+        <p>"سُبْحَانَ اللهِ وَبِحَمْدِهِ"</p>
+        <div class="counter">3</div>
+    </div>
+
+    <div class="dhikr-card" onclick="count(this, 33)">
+        <p>"الْحَمْدُ لِلَّه"</p>
+        <div class="counter">33</div>
+    </div>
+
+    <script>
+        function count(element, max) {
+            let counterDiv = element.querySelector('.counter');
+            let current = parseInt(counterDiv.innerText);
+            if (current > 0) {
+                counterDiv.innerText = current - 1;
+            }
+            if (current === 1) {
+                element.style.backgroundColor = "#d4edda"; // يتغير اللون عند الانتهاء
+                alert("أحسنت يا بطل/بطلة غراس!");
+            }
+        }
+    </script>
+</body>
+</html>
